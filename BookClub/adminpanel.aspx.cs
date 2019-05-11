@@ -111,8 +111,8 @@ namespace BookClub
                 }
             }
 
-            //HttpResponseMessage response = await client.GetAsync(apiURL + "q=neuromancer+inauthor:william+gibson&key=" + apiKEY);
             HttpResponseMessage response = await client.GetAsync(apiURL + "q=" + title + "+inauthor:" + author + "&key=" + apiKEY);
+            //HttpResponseMessage response = await client.GetAsync(apiURL + "q=neuromancer+inauthor:william+gibson&key=" + apiKEY);
             //HttpResponseMessage response = await client.GetAsync("https://www.googleapis.com/books/v1/volumes?q=storm+front+inauthor:butcher&key=AIzaSyAVbJ6aCml5pLODHHIPEexJAd8GJ9Ev6l4");
             googleAPIModel bamresult;
             if (response.IsSuccessStatusCode)
