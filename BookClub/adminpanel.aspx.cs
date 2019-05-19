@@ -30,47 +30,7 @@ namespace BookClub
             int userId = conn.getUserID(currentUser);
 
 
-            HtmlTableRow row;
-            HtmlTableCell cell;
-            TextBox txtBox;
-
-
-
-            row = new HtmlTableRow();
-            cell = new HtmlTableCell();
-            txtBox = new TextBox();
-
-            cell.InnerText = "Author";
-            row.Cells.Add(cell);
-
-            txtBox.Width = 200;
-            cell = new HtmlTableCell();
-            cell.Controls.Add(txtBox);
-            row.Cells.Add(cell);
-
-            tableContent.Rows.Add(row);
-
-            row = new HtmlTableRow();
-            cell = new HtmlTableCell();
-            txtBox = new TextBox();
-
-            cell.InnerText = "Title";
-            row.Cells.Add(cell);
-
-            txtBox.Width = 200;
-            cell = new HtmlTableCell();
-            cell.Controls.Add(txtBox);
-            row.Cells.Add(cell);
-
-            tableContent.Rows.Add(row);
-
-            //cell = new HtmlTableCell();
-            //cell.InnerText = "Author";
-            //row.Cells.Add(cell);
-
-            //cell = new HtmlTableCell();
-            //cell.InnerText = "Title";
-            //row.Cells.Add(cell);
+            draw_table();
 
 
         }
@@ -79,6 +39,14 @@ namespace BookClub
         {
             FormsAuthentication.SignOut();
             Response.Redirect("login.aspx", true);
+        }
+
+        public void btnEdit_Click(object sender, EventArgs e)
+        {
+            draw_table();
+            btnEdit.Visible = false;
+            btnConfirm.Visible = false;
+            btnSubmit.Visible = true;
         }
 
         public void btnConfirm_Click(object sender, EventArgs e)
@@ -128,6 +96,51 @@ namespace BookClub
             
         }
 
+        public void draw_table()
+        {
+            HtmlTableRow row;
+            HtmlTableCell cell;
+            TextBox txtBox;
+
+
+            tableContent.Rows.Clear();
+
+            row = new HtmlTableRow();
+            cell = new HtmlTableCell();
+            txtBox = new TextBox();
+
+            cell.InnerText = "Author";
+            row.Cells.Add(cell);
+
+            txtBox.Width = 200;
+            cell = new HtmlTableCell();
+            cell.Controls.Add(txtBox);
+            row.Cells.Add(cell);
+
+            tableContent.Rows.Add(row);
+
+            row = new HtmlTableRow();
+            cell = new HtmlTableCell();
+            txtBox = new TextBox();
+
+            cell.InnerText = "Title";
+            row.Cells.Add(cell);
+
+            txtBox.Width = 200;
+            cell = new HtmlTableCell();
+            cell.Controls.Add(txtBox);
+            row.Cells.Add(cell);
+
+            tableContent.Rows.Add(row);
+
+            //cell = new HtmlTableCell();
+            //cell.InnerText = "Author";
+            //row.Cells.Add(cell);
+
+            //cell = new HtmlTableCell();
+            //cell.InnerText = "Title";
+            //row.Cells.Add(cell);
+        }
 
         public void draw_table (googleAPIModel gamresult)
         {
@@ -167,7 +180,11 @@ namespace BookClub
             {
                 row = new HtmlTableRow();
                 cell = new HtmlTableCell();
-                rb = new RadioButton();
+                //rb = new RadioButton();
+                rb = new RadioButton
+                {
+                    ID = "RadioButton" + x
+                };
                 cell.Controls.Add(rb);
                 row.Cells.Add(cell);
 
@@ -191,6 +208,11 @@ namespace BookClub
 
                 tableContent.Rows.Add(row);
             }
+            row = new HtmlTableRow();
+            cell = new HtmlTableCell();
+            btnSubmit.Visible = false;
+            btnConfirm.Visible = true;
+            btnEdit.Visible = true;
         }
     }
 }

@@ -114,7 +114,9 @@
 
             <div class="form-row">
                 <center><asp:Button id="btnSubmit" runat="server" OnClick="btnSubmit_ClickAsync" Text="Submit" /></center>
-                <center><asp:Button id="btnConfirm" runat="server" OnClick="btnConfirm_Click" Text="Submit" Visible = "false" /></center>
+                <asp:Button id="btnEdit" runat="server" OnClick="btnEdit_Click" Text="Edit Search" Visible = "false" />
+                <asp:Button id="btnConfirm" runat="server" OnClick="btnConfirm_Click" Text="Confirm" Visible = "false" />
+                
             </div>
 
         </form>
